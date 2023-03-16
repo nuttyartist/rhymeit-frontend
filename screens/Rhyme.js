@@ -33,7 +33,7 @@ function Rhyme() {
   const [errorTitle, setErrorTitle] = useState();
   const [firstInputValue, setFirstInputValue] = useState();
   const [secondInputValue, setSceondInputValue] = useState();
-  const [previousRandomExample, setPreviousRandomExample] = useState(-1);
+  const [previousRandomExamples, setPreviousRandomExamples] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
   const rhymeTypes = [
@@ -64,10 +64,10 @@ function Rhyme() {
     "steady, lazy\nsteely, silky",
   ];
   const examples = [
+    ["Saturate in this bitterness", "And this scorching sweetness"],
     ["Do what's right", "With all your ability"],
     ["I shall not live as useless", "I shall redeem others' anguish"],
     ["What do you think", "What do you dream"],
-    ["Saturate in this bitterness", "And this scorching sweetness"],
   ];
 
   function getRandomInt(max) {
@@ -196,13 +196,23 @@ function Rhyme() {
                 style={styles.exampleButton}
                 onPress={() => {
                   let randNum;
-                  for (let i = 0; i < examples.length - 1; i++) {
+
+                  if (previousRandomExamples.length === examples.length) {
                     randNum = getRandomInt(examples.length);
-                    if (randNum !== previousRandomExample) {
-                      setPreviousRandomExample(randNum);
-                      break;
+                    setPreviousRandomExamples([randNum]);
+                  } else {
+                    for (let i = 0; i < examples.length - 1; i++) {
+                      randNum = getRandomInt(examples.length);
+                      if (!previousRandomExamples.includes(randNum)) {
+                        setPreviousRandomExamples([
+                          ...previousRandomExamples,
+                          randNum,
+                        ]);
+                        break;
+                      }
                     }
                   }
+
                   setFirstInputValue(examples[randNum][0]);
                   setSceondInputValue(examples[randNum][1]);
                   setIsSearching(true);
@@ -316,6 +326,39 @@ function Rhyme() {
                   );
                 }
               })}
+              <View style={styles.exampleButtonContainer}>
+                <Pressable
+                  style={styles.exampleButton}
+                  onPress={() => {
+                    let randNum;
+
+                    if (previousRandomExamples.length === examples.length) {
+                      randNum = getRandomInt(examples.length);
+                      setPreviousRandomExamples([randNum]);
+                    } else {
+                      for (let i = 0; i < examples.length - 1; i++) {
+                        randNum = getRandomInt(examples.length);
+                        console.log(previousRandomExamples);
+                        if (!previousRandomExamples.includes(randNum)) {
+                          setPreviousRandomExamples([
+                            ...previousRandomExamples,
+                            randNum,
+                          ]);
+                          break;
+                        }
+                      }
+                    }
+
+                    setFirstInputValue(examples[randNum][0]);
+                    setSceondInputValue(examples[randNum][1]);
+                    setIsSearching(true);
+                  }}
+                >
+                  <Text style={styles.exampleButtonTextStyle}>
+                    Show me an example
+                  </Text>
+                </Pressable>
+              </View>
             </ScrollView>
           </View>
         )}
