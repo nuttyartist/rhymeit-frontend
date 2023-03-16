@@ -338,7 +338,6 @@ function Rhyme() {
                     } else {
                       for (let i = 0; i < examples.length - 1; i++) {
                         randNum = getRandomInt(examples.length);
-                        console.log(previousRandomExamples);
                         if (!previousRandomExamples.includes(randNum)) {
                           setPreviousRandomExamples([
                             ...previousRandomExamples,
