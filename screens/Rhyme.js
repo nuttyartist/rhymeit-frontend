@@ -117,14 +117,7 @@ function Rhyme() {
     <SafeAreaView style={styles.rootScreen}>
       {/* <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}> */}
       <View style={styles.rootParent}>
-        <View style={styles.instructionsContainer}>
-          <Text style={styles.startInstructions}>
-            Enter two sentences or words to find
-          </Text>
-          <Text style={styles.startInstructions}>
-            similiar words that rhyme
-          </Text>
-        </View>
+        <View style={styles.instructionsContainer}></View>
         <View style={styles.inputsContainer}>
           <TextInput
             value={firstInputValue}
@@ -196,8 +189,6 @@ function Rhyme() {
             />
             <Text style={styles.elaborateInstructionsText}>
               Enter two sentences or words to find related words that rhyme.
-              {"\n\n"}For example, type the words "Separate" and "Unite" into
-              the two boxes.
               {"\n\n"} Then, click the "search" button (:
             </Text>
             <View style={styles.exampleButtonContainer}>
