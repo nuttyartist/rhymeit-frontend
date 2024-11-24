@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const BACKEND_URL =
-  "http://rhymeit-env.eba-5i5mmee7.us-west-2.elasticbeanstalk.com";
+// const BACKEND_URL =
+//   "http://rhymeit-env.eba-5i5mmee7.us-west-2.elasticbeanstalk.com";
+
+const BACKEND_URL = "http://127.0.0.1:5000";
 
 export async function fetchRyhmes(input1, input2) {
   console.log("Here 0");

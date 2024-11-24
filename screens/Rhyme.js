@@ -64,8 +64,6 @@ function Rhyme() {
     "steady, lazy\nsteely, silky",
   ];
   const examples = [
-    ["Saturate in this bitterness", "And this scorching sweetness"],
-    ["Do what's right", "With all your ability"],
     ["I shall not live as useless", "I shall redeem others' anguish"],
     ["What do you think", "What do you dream"],
   ];
@@ -87,7 +85,7 @@ function Rhyme() {
       }
       // Sorting based on score (3rd element)
       allRhymeDataToBeSorted.sort(function (a, b) {
-        return b[2] > a[2];
+        return b[2] - a[2];
       });
 
       setCurrentChosenRhymeIndexInSentences(0);
